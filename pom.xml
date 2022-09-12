@@ -13,8 +13,8 @@
         <exec.mainClass>com.ehmenzala.app.CombatGamee</exec.mainClass>
     </properties>
     <!-- Project Information/Authoring -->
-    <name>Combat Game</name>
-    <description>A simple combat game based on OOP paradigm</description>
+    <name>Fight Game</name>
+    <description>A simple fight game based on OOP paradigm</description>
     <url>https://example.com</url>
     <inceptionYear>2022</inceptionYear>
 </project>
