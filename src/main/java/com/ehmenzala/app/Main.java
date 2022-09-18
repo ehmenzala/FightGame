@@ -1,10 +1,12 @@
 package com.ehmenzala.app;
 
+import com.ehmenzala.classes.Fighter;
 import com.ehmenzala.classes.GCQuestion;
 import com.ehmenzala.classes.MathQuestion;
 import com.ehmenzala.classes.ProgrammingQuestion;
 import com.ehmenzala.classes.Question;
 import com.ehmenzala.classes.QuestionPool;
+import com.ehmenzala.enums.MainSkill;
 import java.util.Arrays;
 
 public class Main {
@@ -12,7 +14,7 @@ public class Main {
     public static void main(String[] args) {
         initQuestionPool();
         
-        /* Imprime en consola preguntas random del Pool de Preguntas */
+        /* Imprime en consola 3 preguntas random del Pool de Preguntas */
         for (int i = 0; i < 3; i++) {
             Question randomQuestion = QuestionPool.getRandomQuestion();
             System.out.println(randomQuestion.getCategory());
@@ -21,6 +23,14 @@ public class Main {
             System.out.println(randomQuestion.getAsnwer());
             System.out.println();
         }
+        
+        Fighter f1 = new Fighter();
+        f1.setMainSkill(MainSkill.WATER);
+        
+        Fighter f2 = new Fighter();
+        f2.setMainSkill(MainSkill.FIRE);
+        
+        FightGame.findMainSkillWinner(f1, f2);
     }
     
     public static void initQuestionPool() {

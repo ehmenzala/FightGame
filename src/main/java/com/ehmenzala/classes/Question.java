@@ -27,23 +27,3 @@ public abstract class Question {
     
     public abstract String getCategory();
 }
-
-
-//    private String[] questions = {
-//        "¿?",
-//        "¿?",
-//        "¿?",
-//    };
-//    
-//    private String[][] options = {
-//        {"resp1", "resp2", "resp3"},
-//        {"resp1", "resp2", "resp3"},
-//        {"resp1", "resp2", "resp3"},
-//    };
-//    
-//    
-//    private char[] answers = {
-//        'A',
-//        'A',
-//        'B',  
-//    };

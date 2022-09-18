@@ -4,6 +4,7 @@ import com.ehmenzala.enums.MainSkill;
 import com.ehmenzala.enums.SecondarySkill;
 
 public class Fighter {
+    
     private String nickname;
     private MainSkill mainSkill;
     private SecondarySkill secondarySkill;

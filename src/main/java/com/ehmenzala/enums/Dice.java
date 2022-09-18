@@ -20,4 +20,6 @@ public enum Dice {
     public File getFaceImage() {
         return imageFile;
     }
+    
+    // Get random face
 }
