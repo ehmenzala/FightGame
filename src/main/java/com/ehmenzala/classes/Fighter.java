@@ -8,6 +8,7 @@ public class Fighter {
     private String nickname;
     private MainSkill mainSkill;
     private SecondarySkill secondarySkill;
+    private int correctQuestions;
     // private Badge badge;
     private int HP;
 
@@ -35,6 +36,10 @@ public class Fighter {
         return secondarySkill;
     }
 
+    public int getCorrectQuestions() {
+        return correctQuestions;
+    }
+
     public void setSecondarySkill(SecondarySkill secondarySkill) {
         this.secondarySkill = secondarySkill;
     }
@@ -45,5 +50,9 @@ public class Fighter {
     
     public void lowHP(int toLow) {
         HP -= toLow;
+    }
+    
+    public void addPoint() {
+        correctQuestions++;
     }
 }

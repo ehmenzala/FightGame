@@ -5,12 +5,12 @@ public abstract class Question {
     
     private String question;
     private String[] options;
-    private int asnwer;
+    private int answer;
 
     public Question(String question, String[] options, int answer) {
         this.question = question;
         this.options = options;
-        this.asnwer = answer;
+        this.answer = answer;
     }
     
     public String getQuestion() {
@@ -21,8 +21,8 @@ public abstract class Question {
         return options;
     }
 
-    public int getAsnwer() {
-        return asnwer;
+    public int getAnswer() {
+        return answer;
     }
     
     public abstract String getCategory();
