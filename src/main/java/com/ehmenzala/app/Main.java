@@ -34,7 +34,8 @@ public class Main {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FightGame.TriviaGame().setVisible(true);
+                new FightGame.TriviaGame().setVisible(false);
+                new FightGame.FighterData().setVisible(true);
             }
         });
     }

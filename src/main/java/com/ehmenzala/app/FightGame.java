@@ -5,14 +5,321 @@ import com.ehmenzala.classes.Fighter;
 import com.ehmenzala.classes.Question;
 import com.ehmenzala.classes.QuestionPool;
 import com.ehmenzala.enums.MainSkill;
+import com.ehmenzala.enums.SecondarySkill;
+
+import static com.ehmenzala.enums.MainSkill.*;
+import static com.ehmenzala.enums.SecondarySkill.*;
+
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 public class FightGame {
 
-    private static Fighter playerOne = new Fighter();
-    private static Fighter playerTwo = new Fighter();
+    private static final Fighter[] FIGHTERS = {
+        new Fighter(),
+        new Fighter(),
+    };
+
+    private static final int TOTAL_PLAYERS = FIGHTERS.length;
+    
     private GameMode mode;
+
+    public static class FighterData extends javax.swing.JFrame {
+
+        private int playerCount = 0;
+
+        public FighterData() {
+            initComponents();
+            setLocationRelativeTo(null);
+            renderUI();
+        }
+
+        // <editor-fold defaultstate="collapsed" desc="Init components"> 
+        private void initComponents() {
+
+            btnsMainSkill = new javax.swing.ButtonGroup();
+            btnsSecondarySkill = new javax.swing.ButtonGroup();
+            panelBg = new javax.swing.JPanel();
+            btnConfirm = new javax.swing.JButton();
+            inputPlayerName = new javax.swing.JTextField();
+            msFire = new javax.swing.JRadioButton();
+            msWater = new javax.swing.JRadioButton();
+            msSnow = new javax.swing.JRadioButton();
+            ssDuality = new javax.swing.JRadioButton();
+            ssVehicle = new javax.swing.JRadioButton();
+            ssKnife = new javax.swing.JRadioButton();
+            lblPlayer = new javax.swing.JLabel();
+            jLabel2 = new javax.swing.JLabel();
+            jSeparator1 = new javax.swing.JSeparator();
+            jLabel3 = new javax.swing.JLabel();
+            jLabel4 = new javax.swing.JLabel();
+
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+            panelBg.setBackground(new java.awt.Color(51, 51, 51));
+
+            btnConfirm.setBackground(new java.awt.Color(134, 134, 134));
+            btnConfirm.setFont(new java.awt.Font("Fira Code Light", 1, 14)); // NOI18N
+            btnConfirm.setForeground(new java.awt.Color(255, 255, 255));
+            btnConfirm.setText("CONFIRMAR");
+            btnConfirm.setBorder(null);
+            btnConfirm.setBorderPainted(false);
+            btnConfirm.setFocusable(false);
+            btnConfirm.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    btnConfirmActionPerformed(evt);
+                }
+            });
+
+            inputPlayerName.setBackground(new java.awt.Color(51, 51, 51));
+            inputPlayerName.setFont(new java.awt.Font("Fira Code Light", 1, 14)); // NOI18N
+            inputPlayerName.setForeground(new java.awt.Color(255, 255, 255));
+            inputPlayerName.setBorder(null);
+
+            msFire.setBackground(new java.awt.Color(51, 51, 51));
+            btnsMainSkill.add(msFire);
+            msFire.setFont(new java.awt.Font("Fira Code Light", 1, 12)); // NOI18N
+            msFire.setForeground(new java.awt.Color(255, 255, 255));
+            msFire.setText("Fuego");
+            msFire.setFocusable(false);
+
+            msWater.setBackground(new java.awt.Color(51, 51, 51));
+            btnsMainSkill.add(msWater);
+            msWater.setFont(new java.awt.Font("Fira Code Light", 1, 12)); // NOI18N
+            msWater.setForeground(new java.awt.Color(255, 255, 255));
+            msWater.setText("Agua");
+            msWater.setFocusable(false);
+
+            msSnow.setBackground(new java.awt.Color(51, 51, 51));
+            btnsMainSkill.add(msSnow);
+            msSnow.setFont(new java.awt.Font("Fira Code Light", 1, 12)); // NOI18N
+            msSnow.setForeground(new java.awt.Color(255, 255, 255));
+            msSnow.setText("Nieve");
+            msSnow.setFocusable(false);
+
+            ssDuality.setBackground(new java.awt.Color(51, 51, 51));
+            btnsSecondarySkill.add(ssDuality);
+            ssDuality.setFont(new java.awt.Font("Fira Code Light", 1, 12)); // NOI18N
+            ssDuality.setForeground(new java.awt.Color(255, 255, 255));
+            ssDuality.setText("Dualidad");
+            ssDuality.setFocusable(false);
+
+            ssVehicle.setBackground(new java.awt.Color(51, 51, 51));
+            btnsSecondarySkill.add(ssVehicle);
+            ssVehicle.setFont(new java.awt.Font("Fira Code Light", 1, 12)); // NOI18N
+            ssVehicle.setForeground(new java.awt.Color(255, 255, 255));
+            ssVehicle.setText("Vehículo");
+            ssVehicle.setFocusable(false);
+
+            ssKnife.setBackground(new java.awt.Color(51, 51, 51));
+            btnsSecondarySkill.add(ssKnife);
+            ssKnife.setFont(new java.awt.Font("Fira Code Light", 1, 12)); // NOI18N
+            ssKnife.setForeground(new java.awt.Color(255, 255, 255));
+            ssKnife.setText("Chuchillo");
+            ssKnife.setFocusable(false);
+
+            lblPlayer.setFont(new java.awt.Font("ArcadeClassic", 1, 36)); // NOI18N
+            lblPlayer.setForeground(new java.awt.Color(255, 255, 255));
+            lblPlayer.setText("Jugador 1");
+
+            jLabel2.setFont(new java.awt.Font("Fira Code Light", 1, 12)); // NOI18N
+            jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+            jLabel2.setText("Ingresa tu nombre de jugador");
+
+            jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+
+            jLabel3.setFont(new java.awt.Font("Fira Code Light", 1, 12)); // NOI18N
+            jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+            jLabel3.setText("<html> Habilidad<br> secundaria</html> ");
+
+            jLabel4.setFont(new java.awt.Font("Fira Code Light", 1, 12)); // NOI18N
+            jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+            jLabel4.setText("<html>\nHabilidad<br>\nprincipal\n</html>\n");
+
+            javax.swing.GroupLayout panelBgLayout = new javax.swing.GroupLayout(panelBg);
+            panelBg.setLayout(panelBgLayout);
+            panelBgLayout.setHorizontalGroup(
+                    panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelBgLayout.createSequentialGroup()
+                                    .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(panelBgLayout.createSequentialGroup()
+                                                    .addGap(86, 86, 86)
+                                                    .addComponent(lblPlayer))
+                                            .addGroup(panelBgLayout.createSequentialGroup()
+                                                    .addGap(110, 110, 110)
+                                                    .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(panelBgLayout.createSequentialGroup()
+                                                    .addGap(44, 44, 44)
+                                                    .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(jLabel2)
+                                                            .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                    .addComponent(inputPlayerName)
+                                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBgLayout.createSequentialGroup()
+                                                                            .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                                    .addComponent(jSeparator1)
+                                                                                    .addGroup(panelBgLayout.createSequentialGroup()
+                                                                                            .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                    .addComponent(msWater, javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                                    .addComponent(msFire, javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                                    .addComponent(msSnow, javax.swing.GroupLayout.Alignment.LEADING))
+                                                                                            .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                                    .addGroup(panelBgLayout.createSequentialGroup()
+                                                                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                            .addGap(6, 6, 6))
+                                                                                                    .addGroup(panelBgLayout.createSequentialGroup()
+                                                                                                            .addGap(112, 112, 112)
+                                                                                                            .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                                                    .addComponent(ssKnife)
+                                                                                                                    .addComponent(ssVehicle))
+                                                                                                            .addGap(0, 0, Short.MAX_VALUE))))
+                                                                                    .addGroup(panelBgLayout.createSequentialGroup()
+                                                                                            .addGap(0, 0, Short.MAX_VALUE)
+                                                                                            .addComponent(ssDuality)
+                                                                                            .addGap(6, 6, 6)))
+                                                                            .addGap(40, 40, 40))))))
+                                    .addContainerGap(20, Short.MAX_VALUE))
+            );
+            panelBgLayout.setVerticalGroup(
+                    panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelBgLayout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(lblPlayer)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(inputPlayerName, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(msWater)
+                                            .addComponent(ssDuality))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(msFire)
+                                            .addComponent(ssVehicle))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(msSnow)
+                                            .addComponent(ssKnife))
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addContainerGap(29, Short.MAX_VALUE))
+            );
+
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+            getContentPane().setLayout(layout);
+            layout.setHorizontalGroup(
+                    layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelBg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            );
+            layout.setVerticalGroup(
+                    layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelBg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            );
+
+            pack();
+        }// </editor-fold>
+
+        private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {
+
+            if (inputPlayerName.getText().length() == 0) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Debes colocarle un nombre a tu jugador",
+                        "¡Cuidado!",
+                        JOptionPane.ERROR_MESSAGE
+                );
+                return;
+            }
+
+            if (inputPlayerName.getText().length() > 12) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "El nombre del jugador no puede pasar de 12 caracteres",
+                        "¡Cuidado!",
+                        JOptionPane.ERROR_MESSAGE
+                );
+                return;
+            }
+
+            if (!(msFire.isSelected() || msSnow.isSelected() || msWater.isSelected()
+                    || ssDuality.isSelected() || ssKnife.isSelected() || ssVehicle.isSelected())) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Debes seleccionar una habilidad principal y una habilidad secundaria",
+                        "¡Cuidado!",
+                        JOptionPane.ERROR_MESSAGE
+                );
+                return;
+            }
+            
+            FIGHTERS[playerCount - 1].setNickname(inputPlayerName.getText());
+            
+            if (msFire.isSelected()) {
+                FIGHTERS[playerCount - 1].setMainSkill(FIRE);
+            } else if (msWater.isSelected()) {
+                FIGHTERS[playerCount - 1].setMainSkill(WATER);
+            } else {
+                FIGHTERS[playerCount - 1].setMainSkill(SNOW);
+            }
+
+            if (ssDuality.isSelected()) {
+                FIGHTERS[playerCount - 1].setSecondarySkill(DUALITY);
+            } else if (ssVehicle.isSelected()) {
+                FIGHTERS[playerCount - 1].setSecondarySkill(VEHICLE);
+            } else {
+                FIGHTERS[playerCount - 1].setSecondarySkill(KNIFE);
+            }
+
+            
+            if (playerCount < TOTAL_PLAYERS) {
+                renderUI();
+            } else {
+                // Aqui se debe crear la ventana de trivia;
+                for (int i = 0; i < FIGHTERS.length; i++) {
+                    System.out.println("Nombre: " + FIGHTERS[i].getNickname());
+                    System.out.println("Main Skill: " + FIGHTERS[i].getMainSkill());
+                    System.out.println("Secondary Skill: " + FIGHTERS[i].getSecondarySkill());
+                    
+                }
+                System.out.println("Ya no mas renderUI");
+            }
+        }
+
+        private void renderUI() {
+            inputPlayerName.setText("");
+            btnsMainSkill.clearSelection();
+            btnsSecondarySkill.clearSelection();
+            lblPlayer.setText(String.valueOf("Jugador " + (playerCount + 1)));
+            System.out.println("Se van a registrar los datos del Jugador #" + (playerCount + 1));
+            playerCount++;
+        }
+
+        private javax.swing.JButton btnConfirm;
+        private javax.swing.ButtonGroup btnsMainSkill;
+        private javax.swing.ButtonGroup btnsSecondarySkill;
+        private javax.swing.JTextField inputPlayerName;
+        private javax.swing.JLabel jLabel2;
+        private javax.swing.JLabel jLabel3;
+        private javax.swing.JLabel jLabel4;
+        private javax.swing.JSeparator jSeparator1;
+        private javax.swing.JLabel lblPlayer;
+        private javax.swing.JRadioButton msFire;
+        private javax.swing.JRadioButton msSnow;
+        private javax.swing.JRadioButton msWater;
+        private javax.swing.JPanel panelBg;
+        private javax.swing.JRadioButton ssDuality;
+        private javax.swing.JRadioButton ssKnife;
+        private javax.swing.JRadioButton ssVehicle;
+    }
 
     public static class TriviaGame extends javax.swing.JFrame {
 
@@ -23,7 +330,7 @@ public class FightGame {
         Timer timer = new Timer(1000, (e) -> {
             if (seconds < 0) {
                 System.out.println("Kabooooom");
-                
+
                 // TIENE QUE TOCARLE AL SIGUIENTE JUGADOR
                 // LUEGO SE RESETEA EL CONTADOR
                 seconds = 25;
@@ -203,21 +510,21 @@ public class FightGame {
             );
 
             pack();
-            
+
             nextQuestion();
         }// </editor-fold>                        
 
         public void optionsActionPerformed(java.awt.event.ActionEvent evt) {
-            
+
             int answerIndex = randomQuestion.getAnswer(); // Índice de la rpta original en el arr de preguntas
             int currentIndex = optionBtns.indexOf((javax.swing.JButton) evt.getSource());
 
             if (answerIndex == currentIndex) {
                 lblAnswerCounter.setText(String.valueOf(++correctAnswers));
                 //playerX.addPoint();
-                playerOne.addPoint();
-                System.out.println(playerOne.getCorrectQuestions());
-                
+                //playerOne.addPoint();
+                //System.out.println(playerOne.getCorrectQuestions());
+
             }
 
             nextQuestion();

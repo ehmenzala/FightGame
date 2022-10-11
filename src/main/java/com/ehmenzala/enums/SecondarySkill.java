@@ -2,13 +2,13 @@ package com.ehmenzala.enums;
 
 public enum SecondarySkill {
     
-    TWIN, VEHICLE, KNIFE;
+    DUALITY, VEHICLE, KNIFE;
     
     private SecondarySkill weakness;
     
     static {
-        TWIN.weakness = KNIFE;
-        VEHICLE.weakness = TWIN;
+        DUALITY.weakness = KNIFE;
+        VEHICLE.weakness = DUALITY;
         KNIFE.weakness = VEHICLE;
     }
     
