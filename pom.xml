@@ -17,4 +17,11 @@
     <description>A simple fight game based on OOP paradigm</description>
     <url>https://example.com</url>
     <inceptionYear>2022</inceptionYear>
+    <dependencies>
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>RELEASE140</version>
+        </dependency>
+    </dependencies>
 </project>

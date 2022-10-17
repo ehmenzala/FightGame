@@ -1,41 +1,20 @@
 package com.ehmenzala.app;
 
-import com.ehmenzala.classes.Fighter;
 import com.ehmenzala.classes.GCQuestion;
 import com.ehmenzala.classes.MathQuestion;
 import com.ehmenzala.classes.ProgrammingQuestion;
-import com.ehmenzala.classes.Question;
 import com.ehmenzala.classes.QuestionPool;
-import com.ehmenzala.enums.MainSkill;
-import java.util.Arrays;
 
 public class Main {
     
     public static void main(String[] args) {
         initQuestionPool();
         
-        /* Imprime en consola 3 preguntas random del Pool de Preguntas */
-        for (int i = 0; i < 3; i++) {
-            Question randomQuestion = QuestionPool.getRandomQuestion();
-            System.out.println(randomQuestion.getCategory());
-            System.out.println(randomQuestion.getQuestion());
-            System.out.println(Arrays.toString(randomQuestion.getOptions()));
-            System.out.println(randomQuestion.getAnswer());
-            System.out.println();
-        }
-        
-        Fighter f1 = new Fighter();
-        f1.setMainSkill(MainSkill.WATER);
-        
-        Fighter f2 = new Fighter();
-        f2.setMainSkill(MainSkill.FIRE);
-        
-        FightGame.findMainSkillWinner(f1, f2);
-        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FightGame.TriviaGame().setVisible(false);
-                new FightGame.FighterData().setVisible(true);
+                new FightGame.MainMenu().setVisible(true);
+                //new FightGame.TriviaGame().setVisible(false);
+                //new FightGame.FighterData().setVisible(false);
             }
         });
     }
