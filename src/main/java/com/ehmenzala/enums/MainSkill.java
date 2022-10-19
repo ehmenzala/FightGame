@@ -1,10 +1,19 @@
 package com.ehmenzala.enums;
 
+import java.io.File;
+
 public enum MainSkill {
     
-    WATER, FIRE, SNOW;
+    WATER (new File("./images/badge-water.jpg")),
+    FIRE (new File("./images/badge-fire.jpg")),
+    SNOW (new File("./images/badge-snow.jpg"));
     
     private MainSkill weakness;
+    private File badge;
+    
+    private MainSkill(File badge) {
+        this.badge = badge;
+    }
     
     static {
         WATER.weakness = SNOW;
@@ -14,6 +23,10 @@ public enum MainSkill {
     
     public MainSkill getWeakness() {
         return this.weakness;
+    }
+    
+    public File getBadge() {
+        return this.badge;
     }
     
 }

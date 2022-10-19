@@ -1,11 +1,9 @@
 package com.ehmenzala.app;
 
-import com.ehmenzala.enums.GameMode;
 import com.ehmenzala.classes.Fighter;
 import com.ehmenzala.classes.Question;
 import com.ehmenzala.classes.QuestionPool;
 import com.ehmenzala.enums.MainSkill;
-import com.ehmenzala.enums.SecondarySkill;
 
 import static com.ehmenzala.enums.MainSkill.*;
 import static com.ehmenzala.enums.SecondarySkill.*;
@@ -29,9 +27,8 @@ public class FightGame {
 
     private static final int TOTAL_PLAYERS = FIGHTERS.length;
     
-    private GameMode mode;
-    
     public static class MainMenu extends javax.swing.JFrame {
+        
         private Font ibmPlexSansBold;
         private Font ibmPlexSansItalic;
 
@@ -40,6 +37,7 @@ public class FightGame {
             setLocationRelativeTo(null);
         }
 
+        // <editor-fold defaultstate="collapsed" desc="Init components"> 
         private void initComponents() {
 
             jPanel1 = new javax.swing.JPanel();
@@ -98,7 +96,7 @@ public class FightGame {
             getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
             pack();
-        }
+        }// </editor-fold>
 
         private void btnTwoPlayersActionPerformed(java.awt.event.ActionEvent evt) {                                              
             System.out.println("Presionaste el botón de 2 jugadores");
@@ -107,14 +105,6 @@ public class FightGame {
 
         private void btnOnePlayerActionPerformed(java.awt.event.ActionEvent evt) {                                              
             System.out.println("Presionaste el botón de 1 jugador");
-        }
-
-        public static void main(String args[]) {
-            java.awt.EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    new CustomFontsTest().setVisible(true);
-                }
-            });
         }
 
         private javax.swing.JButton btnOnePlayer;
@@ -351,8 +341,8 @@ public class FightGame {
                 return;
             }
 
-            if (!(msFire.isSelected() || msSnow.isSelected() || msWater.isSelected()
-                    || ssDuality.isSelected() || ssKnife.isSelected() || ssVehicle.isSelected())) {
+            if (!((msFire.isSelected() || msSnow.isSelected() || msWater.isSelected())
+                    && (ssDuality.isSelected() || ssKnife.isSelected() || ssVehicle.isSelected()))) {
                 JOptionPane.showMessageDialog(
                         null,
                         "Debes seleccionar una habilidad principal y una habilidad secundaria",
@@ -424,7 +414,7 @@ public class FightGame {
 
     public static class TriviaGame extends javax.swing.JFrame {
 
-        private int correctAnswers = 0;
+        private int correctAnswers = 0; // Experimental
         private int seconds = 25;
         Question randomQuestion;
 
@@ -444,7 +434,7 @@ public class FightGame {
             initComponents();
             setLocationRelativeTo(null);
             timer.start();
-            lblPlayerName.setText("Eltetusedemisimasaun");
+            lblPlayerName.setText("Player 1");
         }
 
         @SuppressWarnings("unchecked")
@@ -659,23 +649,4 @@ public class FightGame {
         // </editor-fold>
     }
 
-    public static void findMainSkillWinner(Fighter f1, Fighter f2) {
-        String resultado;
-        // Fighter mainWinner;
-        // Fighter secondaryWinner;
-
-        MainSkill fighterOneMainSkill = f1.getMainSkill();
-        MainSkill fighterTwoMainSkill = f2.getMainSkill();
-
-        /* Verificar habilidades principales */
-        if (fighterOneMainSkill == fighterTwoMainSkill) {
-            resultado = "Empate";
-        } else if (fighterOneMainSkill == fighterTwoMainSkill.getWeakness()) {
-            resultado = "Gana f1";
-        } else {
-            resultado = "Gana f2";
-        }
-
-        System.out.println(resultado);
-    }
 }
