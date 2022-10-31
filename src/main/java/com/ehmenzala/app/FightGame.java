@@ -403,7 +403,6 @@ public class FightGame {
                     System.out.println("Secondary Skill: " + FIGHTERS[i].getSecondarySkill());
 
                 }
-                System.out.println("Ya no mas renderUI");
             }
         }
 
@@ -412,7 +411,6 @@ public class FightGame {
             btnsMainSkill.clearSelection();
             btnsSecondarySkill.clearSelection();
             lblPlayer.setText(String.valueOf("Jugador " + (playerCount + 1)));
-            System.out.println("Se van a registrar los datos del Jugador #" + (playerCount + 1));
             playerCount++;
         }
 
@@ -437,16 +435,24 @@ public class FightGame {
 
     public static class TriviaGame extends javax.swing.JFrame {
 
-        private int correctAnswers = 0; // Experimental
+        private Fighter currentFighter;
+        private int correctAnswers; // Experimental
+        private int playerCount = 0;
         private int seconds = 25;
         Question randomQuestion;
 
         Timer timer = new Timer(1000, (e) -> {
             if (seconds < 0) {
                 System.out.println("Kabooooom");
-
-                // TIENE QUE TOCARLE AL SIGUIENTE JUGADOR
-                // LUEGO SE RESETEA EL CONTADOR
+                
+                if (playerCount == 2) {
+                    System.out.println("Se terminó el juego");
+                    findWinner();
+                    stopTimer();
+                    return;
+                }
+                
+                nextPlayer();
                 seconds = 25;
             }
             this.lblTimer.setText(String.valueOf(seconds));
@@ -457,7 +463,7 @@ public class FightGame {
             initComponents();
             setLocationRelativeTo(null);
             timer.start();
-            lblPlayerName.setText("Player 1");
+            nextPlayer();
         }
 
         @SuppressWarnings("unchecked")
@@ -624,8 +630,6 @@ public class FightGame {
             );
 
             pack();
-
-            nextQuestion();
         }// </editor-fold>                        
 
         public void optionsActionPerformed(java.awt.event.ActionEvent evt) {
@@ -634,11 +638,8 @@ public class FightGame {
             int currentIndex = optionBtns.indexOf((javax.swing.JButton) evt.getSource());
 
             if (answerIndex == currentIndex) {
-                lblAnswerCounter.setText(String.valueOf(++correctAnswers));
-                //playerX.addPoint();
-                //playerOne.addPoint();
-                //System.out.println(playerOne.getCorrectQuestions());
-
+                currentFighter.addPoint();
+                lblAnswerCounter.setText(String.valueOf(currentFighter.getCorrectQuestions()));
             }
 
             nextQuestion();
@@ -662,6 +663,32 @@ public class FightGame {
             btnOptOne.setText(randomQuestion.getOptions()[0]);
             btnOptTwo.setText(randomQuestion.getOptions()[1]);
             btnOptThree.setText(randomQuestion.getOptions()[2]);
+        }
+        
+        public void nextPlayer() {
+            
+            System.out.println("Le toca al jugador #" + (playerCount + 1));
+            
+            currentFighter = FIGHTERS[playerCount];
+            String playerName = currentFighter.getNickname();
+            lblPlayerName.setText(playerName);
+            lblAnswerCounter.setText(String.valueOf(currentFighter.getCorrectQuestions()));
+            nextQuestion();
+            playerCount++;
+        }
+        
+        public void stopTimer() {
+            timer.stop();
+        }
+        
+        public void findWinner() {
+            if (FIGHTERS[0].getCorrectQuestions() > FIGHTERS[1].getCorrectQuestions()) {
+                System.out.println("Ha ganado el jugador 1");
+            } else if (FIGHTERS[1].getCorrectQuestions() > FIGHTERS[0].getCorrectQuestions()) {
+                System.out.println("Ha ganado el jugador 2");
+            } else {
+                System.out.println("Nimodo, tocó peleita");
+            }
         }
 
         // <editor-fold desc="Variables">

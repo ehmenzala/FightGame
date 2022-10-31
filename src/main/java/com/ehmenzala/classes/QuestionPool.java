@@ -69,7 +69,6 @@ public class QuestionPool {
     
     public static Question getRandomQuestion() {
         Question randomQuestion = questions.get(randomOrder.get(counter));
-        System.out.println("counter = " + counter);
         counter++;
         return randomQuestion;
     }
