@@ -28,9 +28,6 @@ public class FightGame {
     private static final int TOTAL_PLAYERS = FIGHTERS.length;
     
     public static class MainMenu extends javax.swing.JFrame {
-        
-        private Font ibmPlexSansBold;
-        private Font ibmPlexSansItalic;
 
         public MainMenu() {
             initComponents();
@@ -100,6 +97,7 @@ public class FightGame {
 
         private void btnTwoPlayersActionPerformed(java.awt.event.ActionEvent evt) {                                              
             System.out.println("Presionaste el botón de 2 jugadores");
+            this.setVisible(false);
             new FighterData().setVisible(true);
         }
 
@@ -113,7 +111,8 @@ public class FightGame {
         private javax.swing.JLabel jLabel2;
         private javax.swing.JPanel jPanel1;
         private javax.swing.JLabel lblBackground;
-        
+        private Font ibmPlexSansBold;
+        private Font ibmPlexSansItalic;
     }
 
     public static class FighterData extends javax.swing.JFrame {
@@ -145,6 +144,7 @@ public class FightGame {
             jSeparator1 = new javax.swing.JSeparator();
             jLabel3 = new javax.swing.JLabel();
             jLabel4 = new javax.swing.JLabel();
+            btnBack = new javax.swing.JButton();
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -228,97 +228,119 @@ public class FightGame {
             jLabel4.setForeground(new java.awt.Color(255, 255, 255));
             jLabel4.setText("<html>\nHabilidad<br>\nprincipal\n</html>\n");
 
+            btnBack.setBackground(new java.awt.Color(134, 134, 134));
+            btnBack.setFont(new java.awt.Font("Fira Code Light", 1, 14)); // NOI18N
+            btnBack.setForeground(new java.awt.Color(255, 255, 255));
+            btnBack.setText("⬅");
+            btnBack.setBorder(null);
+            btnBack.setBorderPainted(false);
+            btnBack.setFocusable(false);
+            btnBack.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    btnBackActionPerformed(evt);
+                }
+            });
+
             javax.swing.GroupLayout panelBgLayout = new javax.swing.GroupLayout(panelBg);
             panelBg.setLayout(panelBgLayout);
             panelBgLayout.setHorizontalGroup(
-                    panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelBgLayout.createSequentialGroup()
-                                    .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelBgLayout.createSequentialGroup()
+                    .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelBgLayout.createSequentialGroup()
+                            .addGap(86, 86, 86)
+                            .addComponent(lblPlayer))
+                        .addGroup(panelBgLayout.createSequentialGroup()
+                            .addGap(44, 44, 44)
+                            .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelBgLayout.createSequentialGroup()
+                                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(29, 29, 29)
+                                    .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel2)
+                                .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(inputPlayerName)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBgLayout.createSequentialGroup()
+                                        .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jSeparator1)
                                             .addGroup(panelBgLayout.createSequentialGroup()
-                                                    .addGap(86, 86, 86)
-                                                    .addComponent(lblPlayer))
+                                                .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(msWater, javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(msFire, javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(msSnow, javax.swing.GroupLayout.Alignment.LEADING))
+                                                .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(panelBgLayout.createSequentialGroup()
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(6, 6, 6))
+                                                    .addGroup(panelBgLayout.createSequentialGroup()
+                                                        .addGap(112, 112, 112)
+                                                        .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(ssKnife)
+                                                            .addComponent(ssVehicle))
+                                                        .addGap(0, 0, Short.MAX_VALUE))))
                                             .addGroup(panelBgLayout.createSequentialGroup()
-                                                    .addGap(110, 110, 110)
-                                                    .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(panelBgLayout.createSequentialGroup()
-                                                    .addGap(44, 44, 44)
-                                                    .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(jLabel2)
-                                                            .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                                    .addComponent(inputPlayerName)
-                                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBgLayout.createSequentialGroup()
-                                                                            .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                                    .addComponent(jSeparator1)
-                                                                                    .addGroup(panelBgLayout.createSequentialGroup()
-                                                                                            .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                    .addComponent(msWater, javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                    .addComponent(msFire, javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                    .addComponent(msSnow, javax.swing.GroupLayout.Alignment.LEADING))
-                                                                                            .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                    .addGroup(panelBgLayout.createSequentialGroup()
-                                                                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                            .addGap(6, 6, 6))
-                                                                                                    .addGroup(panelBgLayout.createSequentialGroup()
-                                                                                                            .addGap(112, 112, 112)
-                                                                                                            .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                                    .addComponent(ssKnife)
-                                                                                                                    .addComponent(ssVehicle))
-                                                                                                            .addGap(0, 0, Short.MAX_VALUE))))
-                                                                                    .addGroup(panelBgLayout.createSequentialGroup()
-                                                                                            .addGap(0, 0, Short.MAX_VALUE)
-                                                                                            .addComponent(ssDuality)
-                                                                                            .addGap(6, 6, 6)))
-                                                                            .addGap(40, 40, 40))))))
-                                    .addContainerGap(20, Short.MAX_VALUE))
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(ssDuality)
+                                                .addGap(6, 6, 6)))
+                                        .addGap(40, 40, 40))))))
+                    .addContainerGap(20, Short.MAX_VALUE))
             );
             panelBgLayout.setVerticalGroup(
-                    panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelBgLayout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(lblPlayer)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(inputPlayerName, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(msWater)
-                                            .addComponent(ssDuality))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(msFire)
-                                            .addComponent(ssVehicle))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(msSnow)
-                                            .addComponent(ssKnife))
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap(29, Short.MAX_VALUE))
+                panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelBgLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(lblPlayer)
+                    .addGap(18, 18, 18)
+                    .addComponent(jLabel2)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(inputPlayerName, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(msWater)
+                        .addComponent(ssDuality))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(msFire)
+                        .addComponent(ssVehicle))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(msSnow)
+                        .addComponent(ssKnife))
+                    .addGap(18, 18, 18)
+                    .addGroup(panelBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(29, Short.MAX_VALUE))
             );
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
             layout.setHorizontalGroup(
-                    layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panelBg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(panelBg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             );
             layout.setVerticalGroup(
-                    layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panelBg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(panelBg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             );
 
             pack();
         }// </editor-fold>
 
+        private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {
+            System.out.println("Has presionado el botón de Back");
+            new MainMenu().setVisible(true);
+            this.setVisible(false);
+        }
+        
         private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {
 
             if (inputPlayerName.getText().length() == 0) {
@@ -394,6 +416,7 @@ public class FightGame {
             playerCount++;
         }
 
+        private javax.swing.JButton btnBack;
         private javax.swing.JButton btnConfirm;
         private javax.swing.ButtonGroup btnsMainSkill;
         private javax.swing.ButtonGroup btnsSecondarySkill;
@@ -622,7 +645,18 @@ public class FightGame {
         }
 
         public void nextQuestion() {
-            randomQuestion = QuestionPool.getRandomQuestion();
+            try {
+                randomQuestion = QuestionPool.getRandomQuestion();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Ya no quedan más preguntas ):",
+                        "¡Oops!",
+                        JOptionPane.ERROR_MESSAGE
+                );
+                return;
+            }
+            
             txtAreaQuestion.setText(randomQuestion.getQuestion());
             lblCathegory.setText(randomQuestion.getCategory());
             btnOptOne.setText(randomQuestion.getOptions()[0]);
