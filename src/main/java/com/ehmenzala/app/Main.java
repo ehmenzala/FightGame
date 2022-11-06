@@ -8,8 +8,9 @@ public class Main {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 //new FightGame.MainMenu().setVisible(true);
-                new FightGame.TriviaGame().setVisible(true);
+                //new FightGame.TriviaGame().setVisible(true);
                 //new FightGame.FighterData().setVisible(true);
+                new FightGame.DeathMatch().setVisible(true);
             }
         });
     }
