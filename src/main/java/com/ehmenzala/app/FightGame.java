@@ -436,9 +436,8 @@ public class FightGame {
     public static class TriviaGame extends javax.swing.JFrame {
 
         private Fighter currentFighter;
-        private int correctAnswers; // Experimental
         private int playerCount = 0;
-        private int seconds = 25;
+        private int seconds = 5;
         Question randomQuestion;
 
         Timer timer = new Timer(1000, (e) -> {
@@ -453,7 +452,7 @@ public class FightGame {
                 }
                 
                 nextPlayer();
-                seconds = 25;
+                seconds = 5;
             }
             this.lblTimer.setText(String.valueOf(seconds));
             seconds--;
