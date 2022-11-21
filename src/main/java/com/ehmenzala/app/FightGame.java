@@ -400,13 +400,8 @@ public class FightGame {
             if (playerCount < TOTAL_PLAYERS) {
                 renderUI();
             } else {
-                // Aqui se debe crear la ventana de trivia;
-                for (int i = 0; i < FIGHTERS.length; i++) {
-                    System.out.println("Nombre: " + FIGHTERS[i].getNickname());
-                    System.out.println("Main Skill: " + FIGHTERS[i].getMainSkill());
-                    System.out.println("Secondary Skill: " + FIGHTERS[i].getSecondarySkill());
-
-                }
+                new TriviaGame().setVisible(true);
+                this.setVisible(false);
             }
         }
 
@@ -446,10 +441,7 @@ public class FightGame {
 
         Timer timer = new Timer(1000, (e) -> {
             if (seconds < 0) {
-                System.out.println("Kabooooom");
-
                 if (playerCount == 2) {
-                    System.out.println("Se terminó el juego");
                     findWinner();
                     stopTimer();
                     return;
@@ -685,16 +677,20 @@ public class FightGame {
         }
 
         public void findWinner() {
-            if (FIGHTERS[0].getCorrectQuestions() > FIGHTERS[1].getCorrectQuestions()) {
-                System.out.println("Ha ganado el jugador 1");
-            } else if (FIGHTERS[1].getCorrectQuestions() > FIGHTERS[0].getCorrectQuestions()) {
-                System.out.println("Ha ganado el jugador 2");
+            Fighter firstPlayer = FIGHTERS[0];
+            Fighter secondPlayer = FIGHTERS[1];
+            
+            if (firstPlayer.getCorrectQuestions() > secondPlayer.getCorrectQuestions()) {
+                JOptionPane.showMessageDialog(null, "Ha ganado el jugador" + firstPlayer.getNickname());
+            } else if (secondPlayer.getCorrectQuestions() > firstPlayer.getCorrectQuestions()) {
+                JOptionPane.showMessageDialog(null, "Ha ganado el jugador " + secondPlayer.getNickname());
             } else {
-                System.out.println("Nimodo, tocó peleita");
+                JOptionPane.showMessageDialog(null, "Nimodo, tocó peleita");
+                //new TheFigth().setVisible(true);
             }
         }
 
-        // <editor-fold desc="Variables">
+        // <editor-fold desc="Variables" defaultstate="collapsed">
         private ArrayList<javax.swing.JButton> optionBtns = new ArrayList<>();
         private javax.swing.JButton btnOptOne;
         private javax.swing.JButton btnOptThree;
@@ -711,6 +707,10 @@ public class FightGame {
         private javax.swing.JLabel lblTimer;
         private javax.swing.JTextArea txtAreaQuestion;
         // </editor-fold>
+    }
+    
+    public static class TheFight extends javax.swing.JFrame  {
+        
     }
 
     public static class DeathMatch extends javax.swing.JFrame {
