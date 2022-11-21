@@ -470,7 +470,7 @@ public class FightGame {
         }
 
         @SuppressWarnings("unchecked")
-        // <editor-fold defaultstate="collapsed" desc="Init components">                          
+        // <editor-fold defaultstate="collapsed" desc="Init components">
         private void initComponents() {
 
             lblAnswerCounter = new javax.swing.JLabel();
@@ -720,12 +720,14 @@ public class FightGame {
 
         public DeathMatch() {
             initComponents();
-            this.setLocationRelativeTo(this);
+            this.setLocationRelativeTo(null);
             this.colocarImagen(fondo, "./images/fondoCombat.jpg");
             this.colocarImagen(jugador1, "./images/izquierdaa.gif");
             this.colocarImagen(jugador2, "./images/guile 1.gif");
         }
 
+        // <editor-fold defaultstate="collapsed" desc="Init components">
+        @SuppressWarnings("unchecked")
         private void initComponents() {
 
             jPanel1 = new javax.swing.JPanel();
@@ -842,15 +844,7 @@ public class FightGame {
             );
 
             pack();
-        }
-        
-        private void toggleEnabled(javax.swing.JButton btn) {
-            if (btn.isEnabled()) {
-                btn.setEnabled(false);
-            } else {
-                btn.setEnabled(true);
-            }
-        }
+        }// </editor-fold>
 
         private void throwBtnActionPerformed(java.awt.event.ActionEvent evt) {
             javax.swing.JButton currentBtn = (javax.swing.JButton) evt.getSource();
