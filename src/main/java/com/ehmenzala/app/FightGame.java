@@ -687,7 +687,7 @@ public class FightGame {
                 JOptionPane.showMessageDialog(null, "Ha ganado el jugador " + secondPlayer.getNickname());
             } else {
                 JOptionPane.showMessageDialog(null, "Nimodo, tocó peleita");
-                //new TheFigth().setVisible(true);
+                new TheFight().setVisible(true);
             }
         }
 
@@ -712,6 +712,156 @@ public class FightGame {
     
     public static class TheFight extends javax.swing.JFrame  {
         
+        private final String[] STICKMAN_POSES = {
+            "./assets/gifs/really-funny-fight-pose.gif",
+            "./assets/gifs/stickman-epic-fight-pose.gif",
+            "./assets/gifs/stickman-fight-pose-kicking.gif",
+            "./assets/gifs/stickman-funny-fight-pose.gif",
+            "./assets/gifs/stickman-normal-fight-pose.gif",
+            "./assets/gifs/stick-man-with-microphone-pose.gif",
+            "./assets/gifs/stickman-yoga-pose-bg-white.gif",
+        };
+        
+        public TheFight() {
+            initComponents();
+            colocarImagen(lblFPImage, STICKMAN_POSES[1]);
+            colocarImagen(lblSPImage, STICKMAN_POSES[0]);
+            colocarImagen(fondo, "./assets/images/swords-icon.png");
+            this.setLocationRelativeTo(null);
+        }
+        
+        // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+        private void initComponents() {
+
+            jPanel1 = new javax.swing.JPanel();
+            btnFight = new javax.swing.JButton();
+            lblSPImage = new javax.swing.JLabel();
+            lblFPBadge = new javax.swing.JLabel();
+            lblFPNickname = new javax.swing.JLabel();
+            lblSPNickname = new javax.swing.JLabel();
+            lblSPBadge = new javax.swing.JLabel();
+            lblFPImage = new javax.swing.JLabel();
+            fondo = new javax.swing.JLabel();
+            jProgressBar1 = new javax.swing.JProgressBar();
+            jProgressBar2 = new javax.swing.JProgressBar();
+
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+            jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+            jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+            btnFight.setBackground(new java.awt.Color(30, 49, 38));
+            btnFight.setFont(new java.awt.Font("IBM Plex Sans", 1, 14)); // NOI18N
+            btnFight.setForeground(new java.awt.Color(255, 255, 255));
+            btnFight.setText("¡Combate!");
+            btnFight.setBorderPainted(false);
+            btnFight.setFocusPainted(false);
+            btnFight.setFocusable(false);
+            btnFight.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    btnFightActionPerformed(evt);
+                }
+            });
+            jPanel1.add(btnFight, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, -1));
+
+            lblSPImage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            jPanel1.add(lblSPImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 80, 140));
+
+            lblFPBadge.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            jPanel1.add(lblFPBadge, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 39, 41));
+
+            lblFPNickname.setFont(new java.awt.Font("Fira Code Light", 1, 18)); // NOI18N
+            lblFPNickname.setText("FPName");
+            jPanel1.add(lblFPNickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, -1));
+
+            lblSPNickname.setFont(new java.awt.Font("Fira Code Light", 1, 18)); // NOI18N
+            lblSPNickname.setText("SPName");
+            jPanel1.add(lblSPNickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, -1, -1));
+
+            lblSPBadge.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            jPanel1.add(lblSPBadge, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 40, 38));
+
+            lblFPImage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            jPanel1.add(lblFPImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 110, 90, 140));
+            jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 100, 90));
+
+            jProgressBar1.setBackground(new java.awt.Color(255, 0, 0));
+            jProgressBar1.setForeground(new java.awt.Color(99, 228, 158));
+            jProgressBar1.setValue(100);
+            jProgressBar1.setFocusable(false);
+            jPanel1.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, 20));
+
+            jProgressBar2.setForeground(new java.awt.Color(99, 228, 158));
+            jProgressBar2.setValue(100);
+            jProgressBar2.setFocusable(false);
+            jPanel1.add(jProgressBar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, -1, 20));
+
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+            getContentPane().setLayout(layout);
+            layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+            );
+            layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
+            );
+
+            pack();
+        }// </editor-fold> 
+    
+        private void btnFightActionPerformed(java.awt.event.ActionEvent evt) {                                         
+            findFightWinner();
+        }
+        
+        public void findFightWinner() {
+            Fighter firstFighter = FIGHTERS[0];
+            Fighter secondFighter = FIGHTERS[1];
+
+            MainSkill ffMainSkill = firstFighter.getMainSkill();
+            SecondarySkill ffSecondarySkill = firstFighter.getSecondarySkill();
+
+            MainSkill sfMainSkill = secondFighter.getMainSkill();
+            SecondarySkill sfSecondarySkill = secondFighter.getSecondarySkill();
+
+            if (ffMainSkill == sfMainSkill.getWeakness()) {
+                return;
+                //return firstFighter; Cinemática
+            } else if (sfMainSkill == ffMainSkill.getWeakness()) {
+                return;
+                //return secondFighter; Cinemática
+            }
+
+            if (ffSecondarySkill == sfSecondarySkill.getWeakness()) {
+                return;
+                //return firstFighter; Cinemática
+            } else if (sfSecondarySkill == ffSecondarySkill.getWeakness()) {
+                return;
+                //return secondFighter; Cinemática
+            }
+            
+           new DeathMatch().setVisible(true);
+
+        }
+        
+        private void colocarImagen(JLabel lbl, String ruta) {
+            ImageIcon image = new ImageIcon(ruta);
+            Icon icono = new ImageIcon(image.getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_DEFAULT));
+            lbl.setIcon(icono);
+            this.repaint();
+        }
+        
+        private javax.swing.JButton btnFight;
+        private javax.swing.JLabel fondo;
+        private javax.swing.JPanel jPanel1;
+        private javax.swing.JProgressBar jProgressBar1;
+        private javax.swing.JProgressBar jProgressBar2;
+        private javax.swing.JLabel lblFPBadge;
+        private javax.swing.JLabel lblFPImage;
+        private javax.swing.JLabel lblFPNickname;
+        private javax.swing.JLabel lblSPBadge;
+        private javax.swing.JLabel lblSPImage;
+        private javax.swing.JLabel lblSPNickname;
     }
 
     public static class DeathMatch extends javax.swing.JFrame {
@@ -918,31 +1068,4 @@ public class FightGame {
 
     }
 
-    public void findFightWinner() {
-        Fighter firstFighter = FIGHTERS[0];
-        Fighter secondFighter = FIGHTERS[1];
-        
-        MainSkill ffMainSkill = firstFighter.getMainSkill();
-        SecondarySkill ffSecondarySkill = firstFighter.getSecondarySkill();
-        
-        MainSkill sfMainSkill = secondFighter.getMainSkill();
-        SecondarySkill sfSecondarySkill = secondFighter.getSecondarySkill();
-        
-        if (ffMainSkill == sfMainSkill.getWeakness()) {
-            //return firstFighter;
-        } else if (sfMainSkill == ffMainSkill.getWeakness()) {
-            //return secondFighter;
-        }
-        
-        if (ffSecondarySkill == sfSecondarySkill.getWeakness()) {
-            //return firstFighter;
-        } else if (sfSecondarySkill == ffSecondarySkill.getWeakness()) {
-            //return secondFighter;
-        }
-        
-        // Empate
-        //new DeathMarch().setVisible(true);drive
-        
-        
-    }
 }
