@@ -7,6 +7,7 @@ import com.ehmenzala.enums.Dice;
 import com.ehmenzala.enums.MainSkill;
 
 import static com.ehmenzala.enums.MainSkill.*;
+import com.ehmenzala.enums.SecondarySkill;
 import static com.ehmenzala.enums.SecondarySkill.*;
 import static java.awt.Font.*;
 
@@ -92,7 +93,7 @@ public class FightGame {
             jLabel2.setText("Escoge un modo de juego");
             jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, -1, -1));
 
-            lblBackground.setIcon(new javax.swing.ImageIcon("./images/swords-bg.png"));
+            lblBackground.setIcon(new javax.swing.ImageIcon("./assets/images/swords-bg.png"));
             jPanel1.add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
             getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -721,9 +722,9 @@ public class FightGame {
         public DeathMatch() {
             initComponents();
             this.setLocationRelativeTo(null);
-            this.colocarImagen(fondo, "./images/fondoCombat.jpg");
-            this.colocarImagen(jugador1, "./images/izquierdaa.gif");
-            this.colocarImagen(jugador2, "./images/guile 1.gif");
+            this.colocarImagen(fondo, "./assets/images/fondoCombat.jpg");
+            this.colocarImagen(jugador1, "./assets/gifs/izquierdaa.gif");
+            this.colocarImagen(jugador2, "./assets/gifs/guile 1.gif");
         }
 
         // <editor-fold defaultstate="collapsed" desc="Init components">
@@ -915,5 +916,33 @@ public class FightGame {
         private javax.swing.JLabel lblFPHP;
         private javax.swing.JLabel lblSPHP;
 
+    }
+
+    public void findFightWinner() {
+        Fighter firstFighter = FIGHTERS[0];
+        Fighter secondFighter = FIGHTERS[1];
+        
+        MainSkill ffMainSkill = firstFighter.getMainSkill();
+        SecondarySkill ffSecondarySkill = firstFighter.getSecondarySkill();
+        
+        MainSkill sfMainSkill = secondFighter.getMainSkill();
+        SecondarySkill sfSecondarySkill = secondFighter.getSecondarySkill();
+        
+        if (ffMainSkill == sfMainSkill.getWeakness()) {
+            //return firstFighter;
+        } else if (sfMainSkill == ffMainSkill.getWeakness()) {
+            //return secondFighter;
+        }
+        
+        if (ffSecondarySkill == sfSecondarySkill.getWeakness()) {
+            //return firstFighter;
+        } else if (sfSecondarySkill == ffSecondarySkill.getWeakness()) {
+            //return secondFighter;
+        }
+        
+        // Empate
+        //new DeathMarch().setVisible(true);drive
+        
+        
     }
 }
