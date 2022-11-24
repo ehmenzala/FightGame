@@ -840,8 +840,8 @@ public class FightGame {
                 //return secondFighter; Cinemática
             }
             
+            this.dispose();
             new DeathMatch().setVisible(true);
-
         }
         
         private void colocarImagen(JLabel lbl, String ruta) {
@@ -1030,10 +1030,17 @@ public class FightGame {
                 btnFirstPlayer.setEnabled(true);
             }
             
-            if (Integer.parseInt(lblSPHP.getText()) <= 0) {
-                lblSPHP.setText("0");
+            if (Integer.parseInt(lblSPHP.getText()) <= 0 || Integer.parseInt(lblFPHP.getText()) <= 0) {
                 btnSecondPlayer.setEnabled(false);
                 btnFirstPlayer.setEnabled(false);
+                
+                if (Integer.parseInt(lblSPHP.getText()) <= 0) {
+                    lblSPHP.setText("0");                    
+                }
+                
+                if (Integer.parseInt(lblFPHP.getText()) <= 0) {
+                    lblFPHP.setText("0");
+                }
             }
             
             System.out.println(randomFace);
