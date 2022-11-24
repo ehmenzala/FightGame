@@ -29,7 +29,8 @@ public class FightGame {
 
     private static final Fighter[] FIGHTERS = {
         new Fighter(),
-        new Fighter(),};
+        new Fighter(),
+    };
 
     private static final int TOTAL_PLAYERS = FIGHTERS.length;
 
@@ -103,10 +104,13 @@ public class FightGame {
 
         private void btnTwoPlayersActionPerformed(java.awt.event.ActionEvent evt) {
             System.out.println("Presionaste el botón de 2 jugadores");
-            this.setVisible(false);
+            this.dispose();
             new FighterData().setVisible(true);
         }
 
+        /* **************
+        ** NOT WORKING **
+        *****************/
         private void btnOnePlayerActionPerformed(java.awt.event.ActionEvent evt) {
             System.out.println("Presionaste el botón de 1 jugador");
         }
@@ -343,8 +347,8 @@ public class FightGame {
 
         private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {
             System.out.println("Has presionado el botón de Back");
+            this.dispose();
             new MainMenu().setVisible(true);
-            this.setVisible(false);
         }
 
         private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {
@@ -401,8 +405,8 @@ public class FightGame {
             if (playerCount < TOTAL_PLAYERS) {
                 renderUI();
             } else {
+                this.dispose();
                 new TriviaGame().setVisible(true);
-                this.setVisible(false);
             }
         }
 
@@ -687,6 +691,7 @@ public class FightGame {
                 JOptionPane.showMessageDialog(null, "Ha ganado el jugador " + secondPlayer.getNickname());
             } else {
                 JOptionPane.showMessageDialog(null, "Nimodo, tocó peleita");
+                this.dispose();
                 new TheFight().setVisible(true);
             }
         }
@@ -713,7 +718,6 @@ public class FightGame {
     public static class TheFight extends javax.swing.JFrame  {
         
         private final String[] STICKMAN_POSES = {
-            "./assets/gifs/really-funny-fight-pose.gif",
             "./assets/gifs/stickman-epic-fight-pose.gif",
             "./assets/gifs/stickman-fight-pose-kicking.gif",
             "./assets/gifs/stickman-funny-fight-pose.gif",
@@ -764,10 +768,8 @@ public class FightGame {
             });
             jPanel1.add(btnFight, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, -1));
 
-            lblSPImage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             jPanel1.add(lblSPImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 80, 140));
 
-            lblFPBadge.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             jPanel1.add(lblFPBadge, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 39, 41));
 
             lblFPNickname.setFont(new java.awt.Font("Fira Code Light", 1, 18)); // NOI18N
@@ -778,10 +780,8 @@ public class FightGame {
             lblSPNickname.setText("SPName");
             jPanel1.add(lblSPNickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, -1, -1));
 
-            lblSPBadge.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             jPanel1.add(lblSPBadge, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 40, 38));
 
-            lblFPImage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             jPanel1.add(lblFPImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 110, 90, 140));
             jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 100, 90));
 
@@ -840,7 +840,7 @@ public class FightGame {
                 //return secondFighter; Cinemática
             }
             
-           new DeathMatch().setVisible(true);
+            new DeathMatch().setVisible(true);
 
         }
         
