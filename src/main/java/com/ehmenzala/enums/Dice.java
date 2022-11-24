@@ -1,14 +1,12 @@
 package com.ehmenzala.enums;
 
-import java.io.File;
-
 public enum Dice {
-    ONE     ("./images/dice-1.png"),
-    TWO     ("./images/dice-2.png"),
-    THREE   ("./images/dice-3.png"),
-    FOUR    ("./images/dice-4.png"),
-    FIVE    ("./images/dice-5.png"),
-    SIX     ("./images/dice-6.png");
+    ONE     ("./assets/images/dice-1.png"),
+    TWO     ("./assets/images/dice-2.png"),
+    THREE   ("./assets/images/dice-3.png"),
+    FOUR    ("./assets/images/dice-4.png"),
+    FIVE    ("./assets/images/dice-5.png"),
+    SIX     ("./assets/images/dice-6.png");
     
     private String imagePath;
 
