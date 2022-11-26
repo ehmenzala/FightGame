@@ -866,9 +866,6 @@ public class FightGame {
 
     public static class DeathMatch extends javax.swing.JFrame {
 
-        private ImageIcon image;
-        private Icon icono;
-
         public DeathMatch() {
             initComponents();
             this.setLocationRelativeTo(null);
@@ -1047,9 +1044,9 @@ public class FightGame {
         }
 
         private void colocarImagen(JLabel lbl, String ruta) {
-            this.image = new ImageIcon(ruta);
-            this.icono = new ImageIcon(this.image.getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_DEFAULT));
-            lbl.setIcon(this.icono);
+            ImageIcon image = new ImageIcon(ruta);
+            Icon icono = new ImageIcon(image.getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_DEFAULT));
+            lbl.setIcon(icono);
             this.repaint();
         }
 
