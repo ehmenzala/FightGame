@@ -9,6 +9,7 @@ import com.ehmenzala.enums.MainSkill;
 import static com.ehmenzala.enums.MainSkill.*;
 import com.ehmenzala.enums.SecondarySkill;
 import static com.ehmenzala.enums.SecondarySkill.*;
+import java.awt.Color;
 import static java.awt.Font.*;
 
 import java.awt.Font;
@@ -19,6 +20,7 @@ import java.io.IOException;
 
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -732,7 +734,7 @@ public class FightGame {
             lblSPNickname.setText(FIGHTERS[1].getNickname());
             colocarImagen(lblSPImage, STICKMAN_POSES[2]);
             colocarImagen(lblFPImage, STICKMAN_POSES[3]);
-            colocarImagen(fondo, "./assets/images/swords-icon.png");
+            colocarImagen(fondo, "./assets/images/vs-img-bg.jpeg");
             this.setLocationRelativeTo(null);
         }
         
@@ -747,20 +749,18 @@ public class FightGame {
             lblSPNickname = new javax.swing.JLabel();
             lblSPBadge = new javax.swing.JLabel();
             lblFPImage = new javax.swing.JLabel();
-            fondo = new javax.swing.JLabel();
             jProgressBar1 = new javax.swing.JProgressBar();
             jProgressBar2 = new javax.swing.JProgressBar();
+            fondo = new javax.swing.JLabel();
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
             jPanel1.setBackground(new java.awt.Color(204, 204, 204));
             jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-            btnFight.setBackground(new java.awt.Color(30, 49, 38));
+            btnFight.setBackground(new java.awt.Color(254, 220, 74));
             btnFight.setFont(new java.awt.Font("IBM Plex Sans", 1, 14)); // NOI18N
-            btnFight.setForeground(new java.awt.Color(255, 255, 255));
             btnFight.setText("¡Combate!");
-            btnFight.setBorderPainted(false);
             btnFight.setFocusPainted(false);
             btnFight.setFocusable(false);
             btnFight.addActionListener(new java.awt.event.ActionListener() {
@@ -768,10 +768,12 @@ public class FightGame {
                     btnFightActionPerformed(evt);
                 }
             });
-            jPanel1.add(btnFight, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, -1));
+            jPanel1.add(btnFight, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, -1, -1));
 
+            lblSPImage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             jPanel1.add(lblSPImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 80, 140));
 
+            lblFPBadge.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             jPanel1.add(lblFPBadge, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 39, 41));
 
             lblFPNickname.setFont(new java.awt.Font("Fira Code Light", 1, 18)); // NOI18N
@@ -782,10 +784,11 @@ public class FightGame {
             lblSPNickname.setText("SPName");
             jPanel1.add(lblSPNickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, -1, -1));
 
+            lblSPBadge.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             jPanel1.add(lblSPBadge, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 40, 38));
 
+            lblFPImage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             jPanel1.add(lblFPImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 110, 90, 140));
-            jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 100, 90));
 
             jProgressBar1.setBackground(new java.awt.Color(255, 0, 0));
             jProgressBar1.setForeground(new java.awt.Color(99, 228, 158));
@@ -797,12 +800,13 @@ public class FightGame {
             jProgressBar2.setValue(100);
             jProgressBar2.setFocusable(false);
             jPanel1.add(jProgressBar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, -1, 20));
+            jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 340));
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
             layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
