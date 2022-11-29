@@ -719,6 +719,9 @@ public class FightGame {
     
     public static class TheFight extends javax.swing.JFrame  {
         
+        private Fighter firstFighter = FIGHTERS[0];
+        private Fighter secondFighter = FIGHTERS[1];
+        
         private final String[] STICKMAN_POSES = {
             "./assets/gifs/stickman-epic-fight-pose.gif",
             "./assets/gifs/stickman-fight-pose-kicking.gif",
@@ -730,11 +733,17 @@ public class FightGame {
         
         public TheFight() {
             initComponents();
-            lblFPNickname.setText(FIGHTERS[0].getNickname());
-            lblSPNickname.setText(FIGHTERS[1].getNickname());
+            
+            lblFPNickname.setText(firstFighter.getNickname());
+            lblSPNickname.setText(secondFighter.getNickname());
+            colocarImagen(lblFPBadge, firstFighter.getMainSkill().getBadgePath());
+            colocarImagen(lblSPBadge, secondFighter.getMainSkill().getBadgePath());
+            
+            colocarImagen(fondo, "./assets/images/vs-img-bg.jpeg");
+            
             colocarImagen(lblSPImage, STICKMAN_POSES[2]);
             colocarImagen(lblFPImage, STICKMAN_POSES[3]);
-            colocarImagen(fondo, "./assets/images/vs-img-bg.jpeg");
+            
             this.setLocationRelativeTo(null);
         }
         
@@ -773,7 +782,6 @@ public class FightGame {
             lblSPImage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             jPanel1.add(lblSPImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 80, 140));
 
-            lblFPBadge.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             jPanel1.add(lblFPBadge, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 39, 41));
 
             lblFPNickname.setFont(new java.awt.Font("Fira Code Light", 1, 18)); // NOI18N
@@ -784,7 +792,6 @@ public class FightGame {
             lblSPNickname.setText("SPName");
             jPanel1.add(lblSPNickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, -1, -1));
 
-            lblSPBadge.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             jPanel1.add(lblSPBadge, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 40, 38));
 
             lblFPImage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -821,8 +828,7 @@ public class FightGame {
         }
         
         public void findFightWinner() {
-            Fighter firstFighter = FIGHTERS[0];
-            Fighter secondFighter = FIGHTERS[1];
+            
 
             MainSkill ffMainSkill = firstFighter.getMainSkill();
             SecondarySkill ffSecondarySkill = firstFighter.getSecondarySkill();
