@@ -4,15 +4,15 @@ import java.io.File;
 
 public enum MainSkill {
     
-    WATER (new File("./images/badge-water.jpg")),
-    FIRE (new File("./images/badge-fire.jpg")),
-    SNOW (new File("./images/badge-snow.jpg"));
+    WATER ("./images/badge-water.jpg"),
+    FIRE ("./images/badge-fire.jpg"),
+    SNOW ("./images/badge-snow.jpg");
     
     private MainSkill weakness;
-    private File badge;
+    private String badgePath;
     
-    private MainSkill(File badge) {
-        this.badge = badge;
+    private MainSkill(String badgePath) {
+        this.badgePath = badgePath;
     }
     
     static {
@@ -25,8 +25,8 @@ public enum MainSkill {
         return this.weakness;
     }
     
-    public File getBadge() {
-        return this.badge;
+    public String getBadgePath() {
+        return this.badgePath;
     }
     
 }
