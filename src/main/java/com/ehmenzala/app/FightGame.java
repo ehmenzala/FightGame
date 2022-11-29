@@ -441,7 +441,7 @@ public class FightGame {
 
         private Fighter currentFighter;
         private int playerCount = 0;
-        private int seconds = 5;
+        private int seconds = 2;
         Question randomQuestion;
 
         Timer timer = new Timer(1000, (e) -> {
@@ -453,7 +453,7 @@ public class FightGame {
                 }
 
                 nextPlayer();
-                seconds = 5;
+                seconds = 2;
             }
             this.lblTimer.setText(String.valueOf(seconds));
             seconds--;
@@ -871,7 +871,9 @@ public class FightGame {
         public DeathMatch() {
             initComponents();
             lblFPName.setText(FIGHTERS[0].getNickname());
+            this.colocarImagen(lblFPBadge, FIGHTERS[0].getMainSkill().getBadgePath());
             lblSPName.setText(FIGHTERS[1].getNickname());
+            this.colocarImagen(lblSPBadge, FIGHTERS[1].getMainSkill().getBadgePath());
             this.colocarImagen(fondo, "./assets/images/fondoCombat.jpg");
             this.colocarImagen(jugador1, "./assets/gifs/izquierdaa.gif");
             this.colocarImagen(jugador2, "./assets/gifs/guile 1.gif");

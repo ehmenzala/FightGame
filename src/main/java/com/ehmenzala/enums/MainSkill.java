@@ -2,9 +2,9 @@ package com.ehmenzala.enums;
 
 public enum MainSkill {
     
-    WATER ("./images/badge-water.jpg"),
-    FIRE ("./images/badge-fire.jpg"),
-    SNOW ("./images/badge-snow.jpg");
+    WATER ("./assets/images/badge-water.jpg"),
+    FIRE ("./assets/images/badge-fire.jpg"),
+    SNOW ("./assets/images/badge-snow.jpg");
     
     private MainSkill weakness;
     private String badgePath;
