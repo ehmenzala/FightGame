@@ -1,7 +1,5 @@
 package com.ehmenzala.enums;
 
-import java.io.File;
-
 public enum MainSkill {
     
     WATER ("./images/badge-water.jpg"),

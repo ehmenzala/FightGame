@@ -9,7 +9,7 @@ public class Fighter {
     private String nickname;
     private MainSkill mainSkill;
     private SecondarySkill secondarySkill;
-    private File badge;
+    private String badge;
     private int correctQuestions;
     private int HP = 20;
 
@@ -27,7 +27,7 @@ public class Fighter {
 
     public void setMainSkill(MainSkill mainSkill) {
         this.mainSkill = mainSkill;
-        this.badge = mainSkill.getBadge();
+        this.badge = mainSkill.getBadgePath();
     }
 
     public SecondarySkill getSecondarySkill() {
@@ -38,7 +38,7 @@ public class Fighter {
         this.secondarySkill = secondarySkill;
     }
     
-    public File getBadge() {
+    public String getBadge() {
         return badge;
     }
     
