@@ -920,10 +920,8 @@ public class FightGame {
             jPanel1.add(jugador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 120, 220));
             jPanel1.add(jugador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 140, 220));
 
-            lblFPDice.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             jPanel1.add(lblFPDice, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 60, 60));
 
-            lblSPDice.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             jPanel1.add(lblSPDice, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 60, 60));
 
             btnSecondPlayer.setText("LANZAR");
@@ -979,7 +977,6 @@ public class FightGame {
             pgbSP.setValue(20);
             jPanel1.add(pgbSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 190, 20));
 
-            lblFPBadge.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
             jPanel1.add(lblFPBadge, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 40, 40));
 
             lblFPName.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -992,7 +989,6 @@ public class FightGame {
             lblSPName.setText("Jugador");
             jPanel1.add(lblSPName, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, -1, -1));
 
-            lblSPBadge.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
             jPanel1.add(lblSPBadge, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 40, 40));
             jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 440));
 
