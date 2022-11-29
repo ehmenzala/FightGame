@@ -728,8 +728,10 @@ public class FightGame {
         
         public TheFight() {
             initComponents();
-            colocarImagen(lblFPImage, STICKMAN_POSES[1]);
-            colocarImagen(lblSPImage, STICKMAN_POSES[0]);
+            lblFPNickname.setText(FIGHTERS[0].getNickname());
+            lblSPNickname.setText(FIGHTERS[1].getNickname());
+            colocarImagen(lblSPImage, STICKMAN_POSES[2]);
+            colocarImagen(lblFPImage, STICKMAN_POSES[3]);
             colocarImagen(fondo, "./assets/images/swords-icon.png");
             this.setLocationRelativeTo(null);
         }
@@ -868,10 +870,12 @@ public class FightGame {
 
         public DeathMatch() {
             initComponents();
-            this.setLocationRelativeTo(null);
+            lblFPName.setText(FIGHTERS[0].getNickname());
+            lblSPName.setText(FIGHTERS[1].getNickname());
             this.colocarImagen(fondo, "./assets/images/fondoCombat.jpg");
             this.colocarImagen(jugador1, "./assets/gifs/izquierdaa.gif");
             this.colocarImagen(jugador2, "./assets/gifs/guile 1.gif");
+            this.setLocationRelativeTo(null);
         }
 
         // <editor-fold defaultstate="collapsed" desc="Init components">
