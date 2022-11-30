@@ -4,7 +4,7 @@ public enum MainSkill {
     
     WATER ("./assets/images/badge-water.png"),
     FIRE ("./assets/images/badge-fire.png"),
-    SNOW ("./assets/images/badge-snow.jpg");
+    SNOW ("./assets/images/badge-snow.png");
     
     private MainSkill weakness;
     private String badgePath;
