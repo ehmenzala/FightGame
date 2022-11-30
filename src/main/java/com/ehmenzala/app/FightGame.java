@@ -883,8 +883,8 @@ public class FightGame {
             lblSPName.setText(FIGHTERS[1].getNickname());
             this.colocarImagen(lblSPBadge, FIGHTERS[1].getMainSkill().getBadgePath());
             this.colocarImagen(fondo, "./assets/images/fondoCombat.jpg");
-            this.colocarImagen(jugador1, "./assets/gifs/izquierdaa.gif");
-            this.colocarImagen(jugador2, "./assets/gifs/guile 1.gif");
+            this.colocarImagen(jugador1, "./assets/gifs/deathmatch-fighter-right.gif");
+            this.colocarImagen(jugador2, "./assets/gifs/deathmatch-fighter-left.gif");
             this.setLocationRelativeTo(null);
         }
 
