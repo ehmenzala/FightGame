@@ -784,13 +784,13 @@ public class FightGame {
 
             jPanel1.add(lblFPBadge, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 39, 41));
 
-            lblFPNickname.setFont(new java.awt.Font("Fira Code Light", 1, 18)); // NOI18N
-            lblFPNickname.setText("FPName");
-            jPanel1.add(lblFPNickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, -1));
+            lblFPNickname.setFont(new java.awt.Font("ArcadeClassic", 0, 24)); // NOI18N
+            lblFPNickname.setText("fpname");
+            jPanel1.add(lblFPNickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 45, 140, 30));
 
-            lblSPNickname.setFont(new java.awt.Font("Fira Code Light", 1, 18)); // NOI18N
+            lblSPNickname.setFont(new java.awt.Font("ArcadeClassic", 0, 24)); // NOI18N
             lblSPNickname.setText("SPName");
-            jPanel1.add(lblSPNickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, -1, -1));
+            jPanel1.add(lblSPNickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 45, 130, 30));
 
             jPanel1.add(lblSPBadge, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 40, 38));
 
