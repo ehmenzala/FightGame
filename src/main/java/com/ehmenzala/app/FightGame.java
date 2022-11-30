@@ -723,12 +723,10 @@ public class FightGame {
         private Fighter secondFighter = FIGHTERS[1];
         
         private final String[] STICKMAN_POSES = {
-            "./assets/gifs/stickman-epic-fight-pose.gif",
-            "./assets/gifs/stickman-fight-pose-kicking.gif",
-            "./assets/gifs/stickman-funny-fight-pose.gif",
-            "./assets/gifs/stickman-normal-fight-pose.gif",
-            "./assets/gifs/stick-man-with-microphone-pose.gif",
-            "./assets/gifs/stickman-yoga-pose-bg-white.gif",
+            "./assets/gifs/stickman-microphone-pose-v1.gif",
+            "./assets/gifs/stickman-microphone-pose-v2.gif",
+            "./assets/gifs/stickman-microphone-pose-v3.gif",
+            "./assets/gifs/stickman-with-fire-on-mouth-pose.gif",
         };
         
         public TheFight() {
