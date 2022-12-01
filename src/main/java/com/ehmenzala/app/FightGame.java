@@ -851,31 +851,33 @@ public class FightGame {
                 SecondarySkillWinner = secondFighter;
             }
             
+            this.dispose();
+            
             if (MainSkillWinner != null) {
                 if (firstFighter.getMainSkill() == WATER && secondFighter.getMainSkill() == FIRE
                         || firstFighter.getMainSkill() == FIRE && secondFighter.getMainSkill() == WATER) {
-                    // cinematica de AGUA vs FUEGO;  
+                    new FightGame.CinematicWindow(CombatCinematics.WATER_FIRE, MainSkillWinner.getNickname()).setVisible(true);
                 } else if (firstFighter.getMainSkill() == FIRE && secondFighter.getMainSkill() == SNOW
                         || firstFighter.getMainSkill() == SNOW && secondFighter.getMainSkill() == FIRE) {
-                    // cinematica de FUEGO vs NIEVE;
+                    new FightGame.CinematicWindow(CombatCinematics.FIRE_SNOW, MainSkillWinner.getNickname()).setVisible(true);
                 } else if (firstFighter.getMainSkill() == SNOW && secondFighter.getMainSkill() == WATER
                         || firstFighter.getMainSkill() == WATER && secondFighter.getMainSkill() == SNOW) {
-                    // cinematica de NIEVE vs AGUA;
+                    new FightGame.CinematicWindow(CombatCinematics.SNOW_WATER, MainSkillWinner.getNickname()).setVisible(true);
                 }
                 
             } else if (SecondarySkillWinner != null) {
                 if (firstFighter.getSecondarySkill() == DUALITY && secondFighter.getSecondarySkill() == VEHICLE
                         || firstFighter.getSecondarySkill() == VEHICLE && secondFighter.getSecondarySkill() == DUALITY) {
-                    // cinemátiva de DUALITY vs VEHICHLE;
+                    new FightGame.CinematicWindow(CombatCinematics.DUALITY_VEHICLE, SecondarySkillWinner.getNickname()).setVisible(true);
                 } else if (firstFighter.getSecondarySkill() == VEHICLE && secondFighter.getSecondarySkill() == KNIFE
                         || firstFighter.getSecondarySkill() == KNIFE && secondFighter.getSecondarySkill() == VEHICLE) {
-                    // cinemátiva VEHICLE vs KNIFE;
+                    new FightGame.CinematicWindow(CombatCinematics.VEHICLE_KNIFE, SecondarySkillWinner.getNickname()).setVisible(true);
                 } else if (firstFighter.getSecondarySkill() == KNIFE && secondFighter.getSecondarySkill() == DUALITY
                         || firstFighter.getSecondarySkill() == DUALITY && secondFighter.getSecondarySkill() == KNIFE) {
-                    // conemática KNIFE vs DUALITY;
+                    new FightGame.CinematicWindow(CombatCinematics.KNIFE_DUALITY, SecondarySkillWinner.getNickname()).setVisible(true);
                 }
+                
             } else {
-                this.dispose();
                 new DeathMatch().setVisible(true);
             }
 
