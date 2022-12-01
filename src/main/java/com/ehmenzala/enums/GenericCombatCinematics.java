@@ -13,6 +13,7 @@ public enum GenericCombatCinematics {
     
     private GenericCombatCinematics(String GIFPath, int duration) {
         this.GIFPath = GIFPath;
+        this.duration = duration;
     }
     
     public String getGIFPath() {
