@@ -351,8 +351,14 @@ public class FightGame {
 
         private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {
             System.out.println("Has presionado el botón de Back");
-            this.dispose();
-            new MainMenu().setVisible(true);
+            System.out.println("playerCount: " + playerCount);
+            if (playerCount == 1) {
+                this.dispose();
+                new MainMenu().setVisible(true);
+            } else {
+                playerCount -= 2;
+                renderUI();
+            }
         }
 
         private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {
@@ -828,8 +834,8 @@ public class FightGame {
         }
         
         public void findFightWinner() {
-            
 
+            
             MainSkill ffMainSkill = firstFighter.getMainSkill();
             SecondarySkill ffSecondarySkill = firstFighter.getSecondarySkill();
 
