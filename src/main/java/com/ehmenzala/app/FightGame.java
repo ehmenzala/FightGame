@@ -689,13 +689,15 @@ public class FightGame {
             Fighter firstPlayer = FIGHTERS[0];
             Fighter secondPlayer = FIGHTERS[1];
             
+            this.dispose();
+            
             if (firstPlayer.getCorrectQuestions() > secondPlayer.getCorrectQuestions()) {
-                JOptionPane.showMessageDialog(null, "Ha ganado el jugador" + firstPlayer.getNickname());
+                //JOptionPane.showMessageDialog(null, "Ha ganado el jugador" + firstPlayer.getNickname());
+                new CinematicWindow(GenericCombatCinematics.randomGenericCinematic(), firstPlayer.getNickname()).setVisible(true);
             } else if (secondPlayer.getCorrectQuestions() > firstPlayer.getCorrectQuestions()) {
-                JOptionPane.showMessageDialog(null, "Ha ganado el jugador " + secondPlayer.getNickname());
+                //JOptionPane.showMessageDialog(null, "Ha ganado el jugador " + secondPlayer.getNickname());
+                new CinematicWindow(GenericCombatCinematics.randomGenericCinematic(), secondPlayer.getNickname()).setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(null, "Nimodo, tocó peleita");
-                this.dispose();
                 new TheFight().setVisible(true);
             }
         }
@@ -1070,12 +1072,14 @@ public class FightGame {
                 btnSecondPlayer.setEnabled(false);
                 btnFirstPlayer.setEnabled(false);
                 
-                if (Integer.parseInt(lblSPHP.getText()) <= 0) {
-                    lblSPHP.setText("0");                    
-                }
+                this.dispose();
                 
-                if (Integer.parseInt(lblFPHP.getText()) <= 0) {
+                if (Integer.parseInt(lblSPHP.getText()) <= 0) {
+                    lblSPHP.setText("0");
+                    new CinematicWindow(GenericCombatCinematics.randomGenericCinematic(), FIGHTERS[0].getNickname()).setVisible(true);
+                } else if (Integer.parseInt(lblFPHP.getText()) <= 0) {
                     lblFPHP.setText("0");
+                    new CinematicWindow(GenericCombatCinematics.randomGenericCinematic(), FIGHTERS[1].getNickname()).setVisible(true);
                 }
             }
             
@@ -1113,30 +1117,38 @@ public class FightGame {
 
     public static class CinematicWindow extends javax.swing.JFrame {
         
+        Timer timer;
+        
         public CinematicWindow(GenericCombatCinematics genericCinematic, String winnerNickname) {
+            
             int duration = genericCinematic.getDuration();
             initComponents();
             colocarImagen(lblVideo, genericCinematic.getGIFPath());
             lblWinner.setText(winnerNickname);
 
-            Timer timer = new Timer(duration, (e) -> {
+            timer = new Timer(duration, (e) -> {
                 this.dispose();
+                stopTimer();
                 new MainMenu().setVisible(true);
             });
 
+            setLocationRelativeTo(null);
             timer.start();
         }
 
         public CinematicWindow(CombatCinematics combatCinematic, String winnerNickname) {
+            
             int duration = combatCinematic.getDuration();
             initComponents();
             colocarImagen(lblVideo, combatCinematic.getGIFPath());
             lblWinner.setText(winnerNickname);
-            Timer timer = new Timer(duration, (e) -> {
+            timer = new Timer(duration, (e) -> {
                 this.dispose();
+                stopTimer();
                 new MainMenu().setVisible(true);
             });
 
+            setLocationRelativeTo(null);
             timer.start();
         }
 
@@ -1183,6 +1195,10 @@ public class FightGame {
 
             pack();
         }// </editor-fold>
+        
+        private void stopTimer() {
+            timer.stop();
+        }
         
         private void btnSkipCinematicActionPerformed(java.awt.event.ActionEvent evt) {                                                 
             this.dispose();
