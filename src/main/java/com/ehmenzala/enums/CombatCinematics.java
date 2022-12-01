@@ -14,6 +14,7 @@ public enum CombatCinematics {
     
     private CombatCinematics(String GIFPath, int duration) {
         this.GIFPath = GIFPath;
+        this.duration = duration;
     }
     
     public String getGIFPath() {
