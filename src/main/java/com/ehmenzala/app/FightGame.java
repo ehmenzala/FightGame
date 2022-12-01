@@ -3,7 +3,9 @@ package com.ehmenzala.app;
 import com.ehmenzala.classes.Fighter;
 import com.ehmenzala.classes.Question;
 import com.ehmenzala.classes.QuestionPool;
+import com.ehmenzala.enums.CombatCinematics;
 import com.ehmenzala.enums.Dice;
+import com.ehmenzala.enums.GenericCombatCinematics;
 import com.ehmenzala.enums.MainSkill;
 
 import static com.ehmenzala.enums.MainSkill.*;
@@ -833,25 +835,50 @@ public class FightGame {
 
             MainSkill sfMainSkill = secondFighter.getMainSkill();
             SecondarySkill sfSecondarySkill = secondFighter.getSecondarySkill();
-
+            
+            Fighter MainSkillWinner = null;
+            Fighter SecondarySkillWinner = null;
+            
             if (ffMainSkill == sfMainSkill.getWeakness()) {
-                return;
-                //return firstFighter; Cinemática
+                MainSkillWinner = firstFighter;
             } else if (sfMainSkill == ffMainSkill.getWeakness()) {
-                return;
-                //return secondFighter; Cinemática
+                MainSkillWinner = secondFighter;
             }
 
             if (ffSecondarySkill == sfSecondarySkill.getWeakness()) {
-                return;
-                //return firstFighter; Cinemática
+                SecondarySkillWinner = firstFighter;
             } else if (sfSecondarySkill == ffSecondarySkill.getWeakness()) {
-                return;
-                //return secondFighter; Cinemática
+                SecondarySkillWinner = secondFighter;
             }
             
-            this.dispose();
-            new DeathMatch().setVisible(true);
+            if (MainSkillWinner != null) {
+                if (firstFighter.getMainSkill() == WATER && secondFighter.getMainSkill() == FIRE
+                        || firstFighter.getMainSkill() == FIRE && secondFighter.getMainSkill() == WATER) {
+                    // cinematica de AGUA vs FUEGO;  
+                } else if (firstFighter.getMainSkill() == FIRE && secondFighter.getMainSkill() == SNOW
+                        || firstFighter.getMainSkill() == SNOW && secondFighter.getMainSkill() == FIRE) {
+                    // cinematica de FUEGO vs NIEVE;
+                } else if (firstFighter.getMainSkill() == SNOW && secondFighter.getMainSkill() == WATER
+                        || firstFighter.getMainSkill() == WATER && secondFighter.getMainSkill() == SNOW) {
+                    // cinematica de NIEVE vs AGUA;
+                }
+                
+            } else if (SecondarySkillWinner != null) {
+                if (firstFighter.getSecondarySkill() == DUALITY && secondFighter.getSecondarySkill() == VEHICLE
+                        || firstFighter.getSecondarySkill() == VEHICLE && secondFighter.getSecondarySkill() == DUALITY) {
+                    // cinemátiva de DUALITY vs VEHICHLE;
+                } else if (firstFighter.getSecondarySkill() == VEHICLE && secondFighter.getSecondarySkill() == KNIFE
+                        || firstFighter.getSecondarySkill() == KNIFE && secondFighter.getSecondarySkill() == VEHICLE) {
+                    // cinemátiva VEHICLE vs KNIFE;
+                } else if (firstFighter.getSecondarySkill() == KNIFE && secondFighter.getSecondarySkill() == DUALITY
+                        || firstFighter.getSecondarySkill() == DUALITY && secondFighter.getSecondarySkill() == KNIFE) {
+                    // conemática KNIFE vs DUALITY;
+                }
+            } else {
+                this.dispose();
+                new DeathMatch().setVisible(true);
+            }
+
         }
         
         private void colocarImagen(JLabel lbl, String ruta) {
@@ -1082,4 +1109,96 @@ public class FightGame {
 
     }
 
+    public static class CinematicWindow extends javax.swing.JFrame {
+        
+        public CinematicWindow(GenericCombatCinematics genericCinematic, String winnerNickname) {
+            int duration = genericCinematic.getDuration();
+            initComponents();
+            colocarImagen(lblVideo, genericCinematic.getGIFPath());
+            lblWinner.setText(winnerNickname);
+
+            Timer timer = new Timer(duration, (e) -> {
+                this.dispose();
+                new MainMenu().setVisible(true);
+            });
+
+            timer.start();
+        }
+
+        public CinematicWindow(CombatCinematics combatCinematic, String winnerNickname) {
+            int duration = combatCinematic.getDuration();
+            initComponents();
+            colocarImagen(lblVideo, combatCinematic.getGIFPath());
+            lblWinner.setText(winnerNickname);
+            Timer timer = new Timer(duration, (e) -> {
+                this.dispose();
+                new MainMenu().setVisible(true);
+            });
+
+            timer.start();
+        }
+
+        @SuppressWarnings("unchecked")
+        // <editor-fold defaultstate="collapsed" desc="Generated Code">
+        private void initComponents() {
+
+            jPanel1 = new javax.swing.JPanel();
+            btnSkipCinematic = new javax.swing.JButton();
+            lblWinner = new javax.swing.JLabel();
+            jLabel1 = new javax.swing.JLabel();
+            lblVideo = new javax.swing.JLabel();
+
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+            getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+            jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+            btnSkipCinematic.setBackground(new java.awt.Color(51, 51, 51));
+            btnSkipCinematic.setFont(new java.awt.Font("ArcadeClassic", 0, 18)); // NOI18N
+            btnSkipCinematic.setForeground(new java.awt.Color(255, 255, 255));
+            btnSkipCinematic.setText("Saltar");
+            btnSkipCinematic.setBorderPainted(false);
+            btnSkipCinematic.setFocusPainted(false);
+            btnSkipCinematic.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    btnSkipCinematicActionPerformed(evt);
+                }
+            });
+            jPanel1.add(btnSkipCinematic, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, -1, -1));
+
+            lblWinner.setFont(new java.awt.Font("ArcadeClassic", 0, 36)); // NOI18N
+            lblWinner.setForeground(new java.awt.Color(51, 153, 0));
+            lblWinner.setText("ESTEBAN");
+            jPanel1.add(lblWinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, -1));
+
+            jLabel1.setFont(new java.awt.Font("ArcadeClassic", 0, 36)); // NOI18N
+            jLabel1.setForeground(new java.awt.Color(51, 153, 0));
+            jLabel1.setText("GANADOR");
+            jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, -1, -1));
+            jPanel1.add(lblVideo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 320));
+
+            getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 320));
+
+            pack();
+        }// </editor-fold>
+        
+        private void btnSkipCinematicActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+            this.dispose();
+            new MainMenu().setVisible(true);
+        }
+
+        private void colocarImagen(JLabel lbl, String ruta) {
+            ImageIcon image = new ImageIcon(ruta);
+            Icon icono = new ImageIcon(image.getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_DEFAULT));
+            lbl.setIcon(icono);
+            this.repaint();
+        }
+
+        private javax.swing.JButton btnSkipCinematic;
+        private javax.swing.JLabel jLabel1;
+        private javax.swing.JPanel jPanel1;
+        private javax.swing.JLabel lblVideo;
+        private javax.swing.JLabel lblWinner;
+    }
+    
 }
