@@ -781,7 +781,6 @@ public class FightGame {
             });
             jPanel1.add(btnFight, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, -1, -1));
 
-            lblSPImage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             jPanel1.add(lblSPImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 80, 140));
 
             jPanel1.add(lblFPBadge, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 39, 41));
@@ -796,7 +795,6 @@ public class FightGame {
 
             jPanel1.add(lblSPBadge, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 40, 38));
 
-            lblFPImage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             jPanel1.add(lblFPImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 110, 90, 140));
 
             jProgressBar1.setBackground(new java.awt.Color(255, 0, 0));
