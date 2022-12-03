@@ -17,6 +17,4 @@ public enum Dice {
     public String getImagePath() {
         return imagePath;
     }
-    
-    // Get random face
 }

@@ -2,7 +2,6 @@ package com.ehmenzala.classes;
 
 import com.ehmenzala.enums.MainSkill;
 import com.ehmenzala.enums.SecondarySkill;
-import java.io.File;
 
 public class Fighter {
     

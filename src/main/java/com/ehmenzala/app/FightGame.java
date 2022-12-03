@@ -11,18 +11,11 @@ import com.ehmenzala.enums.MainSkill;
 import static com.ehmenzala.enums.MainSkill.*;
 import com.ehmenzala.enums.SecondarySkill;
 import static com.ehmenzala.enums.SecondarySkill.*;
-import java.awt.Color;
-import static java.awt.Font.*;
 
-import java.awt.Font;
-import java.awt.FontFormatException;
 import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
 
 import java.util.ArrayList;
 import java.util.Random;
-import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -91,7 +84,6 @@ public class FightGame {
         }// </editor-fold>
 
         private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {
-            System.out.println("Presionaste el botón de 2 jugadores");
             this.dispose();
             new FighterData().setVisible(true);
         }
@@ -324,8 +316,6 @@ public class FightGame {
         }// </editor-fold>
 
         private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {
-            System.out.println("Has presionado el botón de Back");
-            System.out.println("playerCount: " + playerCount);
             if (playerCount == 1) {
                 this.dispose();
                 new MainMenu().setVisible(true);
@@ -618,7 +608,7 @@ public class FightGame {
 
         public void optionsActionPerformed(java.awt.event.ActionEvent evt) {
 
-            int answerIndex = randomQuestion.getAnswer(); // Índice de la rpta original en el arr de preguntas
+            int answerIndex = randomQuestion.getAnswer();
             int currentIndex = optionBtns.indexOf((javax.swing.JButton) evt.getSource());
 
             if (answerIndex == currentIndex) {
@@ -672,10 +662,8 @@ public class FightGame {
             this.dispose();
             
             if (firstPlayer.getCorrectQuestions() > secondPlayer.getCorrectQuestions()) {
-                //JOptionPane.showMessageDialog(null, "Ha ganado el jugador" + firstPlayer.getNickname());
                 new CinematicWindow(GenericCombatCinematics.randomGenericCinematic(), firstPlayer.getNickname()).setVisible(true);
             } else if (secondPlayer.getCorrectQuestions() > firstPlayer.getCorrectQuestions()) {
-                //JOptionPane.showMessageDialog(null, "Ha ganado el jugador " + secondPlayer.getNickname());
                 new CinematicWindow(GenericCombatCinematics.randomGenericCinematic(), secondPlayer.getNickname()).setVisible(true);
             } else {
                 new TheFight().setVisible(true);
@@ -1180,6 +1168,7 @@ public class FightGame {
         
         private void btnSkipCinematicActionPerformed(java.awt.event.ActionEvent evt) {                                                 
             this.dispose();
+            stopTimer();
             new MainMenu().setVisible(true);
         }
 
