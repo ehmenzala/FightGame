@@ -37,7 +37,7 @@ public class FightGame {
     };
 
     private static final int TOTAL_PLAYERS = FIGHTERS.length;
-
+    
     public static class MainMenu extends javax.swing.JFrame {
 
         public MainMenu() {
@@ -49,84 +49,58 @@ public class FightGame {
         private void initComponents() {
 
             jPanel1 = new javax.swing.JPanel();
-            btnOnePlayer = new javax.swing.JButton();
-            btnTwoPlayers = new javax.swing.JButton();
+            btnStart = new javax.swing.JButton();
             jLabel1 = new javax.swing.JLabel();
             jLabel2 = new javax.swing.JLabel();
             lblBackground = new javax.swing.JLabel();
-
-            try {
-                ibmPlexSansBold = Font.createFont(TRUETYPE_FONT, new File("./fonts/IBMPlexSans-Bold.ttf")).deriveFont(20f);
-                ibmPlexSansItalic = Font.createFont(TRUETYPE_FONT, new File("./fonts/IBMPlexSans-Italic.ttf")).deriveFont(14f);
-            } catch (IOException | FontFormatException e) {
-            }
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
             getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
             jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-            btnOnePlayer.setBackground(new java.awt.Color(134, 134, 134));
-            btnOnePlayer.setFont(ibmPlexSansBold);
-            btnOnePlayer.setForeground(new java.awt.Color(255, 255, 255));
-            btnOnePlayer.setText("1 Jugador");
-            btnOnePlayer.setBorderPainted(false);
-            btnOnePlayer.setFocusable(false);
-            btnOnePlayer.addActionListener((java.awt.event.ActionEvent evt) -> {
-                btnOnePlayerActionPerformed(evt);
+            btnStart.setBackground(new java.awt.Color(134, 134, 134));
+            btnStart.setFont(new java.awt.Font("IBM Plex Sans", 1, 20)); // NOI18N
+            btnStart.setForeground(new java.awt.Color(255, 255, 255));
+            btnStart.setText("¡Comenzar!");
+            btnStart.setBorderPainted(false);
+            btnStart.setFocusable(false);
+            btnStart.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    btnStartActionPerformed(evt);
+                }
             });
-            jPanel1.add(btnOnePlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 190, 40));
+            jPanel1.add(btnStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 190, 40));
 
-            btnTwoPlayers.setBackground(new java.awt.Color(134, 134, 134));
-            btnTwoPlayers.setFont(ibmPlexSansBold);
-            btnTwoPlayers.setForeground(new java.awt.Color(255, 255, 255));
-            btnTwoPlayers.setText("2 Jugadores");
-            btnTwoPlayers.setBorderPainted(false);
-            btnTwoPlayers.setFocusable(false);
-            btnTwoPlayers.addActionListener((java.awt.event.ActionEvent evt) -> {
-                btnTwoPlayersActionPerformed(evt);
-            });
-            jPanel1.add(btnTwoPlayers, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 190, 40));
-
-            jLabel1.setFont(ibmPlexSansBold);
+            jLabel1.setFont(new java.awt.Font("IBM Plex Sans", 1, 20)); // NOI18N
             jLabel1.setForeground(new java.awt.Color(255, 255, 255));
             jLabel1.setText("¡BIENVENIDO AL JUEGO DE PREGUNTAS Y COMBATES!");
             jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, 20));
 
-            jLabel2.setFont(ibmPlexSansItalic);
+            jLabel2.setFont(new java.awt.Font("IBM Plex Sans", 3, 14)); // NOI18N
             jLabel2.setForeground(new java.awt.Color(129, 129, 129));
-            jLabel2.setText("Escoge un modo de juego");
+            jLabel2.setText("Iniciar el juego");
             jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, -1, -1));
 
-            lblBackground.setIcon(new javax.swing.ImageIcon("./assets/images/swords-bg.png"));
-            jPanel1.add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+            lblBackground.setIcon(new javax.swing.ImageIcon("./assets/images/swords-bg.png")); // NOI18N
+            jPanel1.add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 330));
 
-            getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+            getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, -1));
 
             pack();
         }// </editor-fold>
 
-        private void btnTwoPlayersActionPerformed(java.awt.event.ActionEvent evt) {
+        private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {
             System.out.println("Presionaste el botón de 2 jugadores");
             this.dispose();
             new FighterData().setVisible(true);
         }
 
-        /* **************
-        ** NOT WORKING **
-        *****************/
-        private void btnOnePlayerActionPerformed(java.awt.event.ActionEvent evt) {
-            System.out.println("Presionaste el botón de 1 jugador");
-        }
-
-        private javax.swing.JButton btnOnePlayer;
-        private javax.swing.JButton btnTwoPlayers;
+        private javax.swing.JButton btnStart;
         private javax.swing.JLabel jLabel1;
         private javax.swing.JLabel jLabel2;
         private javax.swing.JPanel jPanel1;
         private javax.swing.JLabel lblBackground;
-        private Font ibmPlexSansBold;
-        private Font ibmPlexSansItalic;
     }
 
     public static class FighterData extends javax.swing.JFrame {
