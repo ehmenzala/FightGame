@@ -17,6 +17,52 @@
     <description>A simple fight game based on OOP paradigm</description>
     <url>https://example.com</url>
     <inceptionYear>2022</inceptionYear>
+    <developers>
+        <developer>
+            <id>ehmenzala</id>
+            <name>Esteban</name>
+            <url>https://github.com/ehmenzala</url>
+            <roles>
+                <role>developer</role>
+                <role>tester</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>jhovan</id>
+            <name>Jhovan</name>
+            <url>https://github.com/Riick6</url>
+            <roles>
+                <role>developer</role>
+                <role>tester</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>LegioNznx</id>
+            <name>Jean</name>
+            <url>https://github.com/LegioNznx</url>
+            <roles>
+                <role>developer</role>
+                <role>tester</role>
+            </roles>
+        </developer>
+    </developers>
+    <contributors>
+        <contributor>
+            <name>Yomaira</name>
+            <url>https://github.com/home</url>
+            <roles>
+                <role>UI/UX Designer</role>
+                <role>tester</role>
+            </roles>
+        </contributor>
+        <contributor>
+            <name>Sebastian</name>
+            <url>https://github.com/sebas2406</url>
+            <roles>
+                <role>tester</role>
+            </roles>
+        </contributor>
+    </contributors>
     <dependencies>
         <dependency>
             <groupId>org.netbeans.external</groupId>
