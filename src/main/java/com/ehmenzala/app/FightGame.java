@@ -4,6 +4,7 @@ import com.ehmenzala.classes.Fighter;
 import com.ehmenzala.classes.Question;
 import com.ehmenzala.classes.QuestionPool;
 import com.ehmenzala.enums.CombatCinematics;
+import com.ehmenzala.enums.DeathMatchCinematic;
 import com.ehmenzala.enums.Dice;
 import com.ehmenzala.enums.GenericCombatCinematics;
 import com.ehmenzala.enums.MainSkill;
@@ -415,7 +416,7 @@ public class FightGame {
 
         private Fighter currentFighter;
         private int playerCount = 0;
-        private int seconds = 2;
+        private int seconds = 25;
         Question randomQuestion;
 
         Timer timer = new Timer(1000, (e) -> {
@@ -427,7 +428,7 @@ public class FightGame {
                 }
 
                 nextPlayer();
-                seconds = 2;
+                seconds = 25;
             }
             this.lblTimer.setText(String.valueOf(seconds));
             seconds--;
@@ -880,7 +881,7 @@ public class FightGame {
             lblSPName.setText(FIGHTERS[1].getNickname());
             this.colocarImagen(lblSPBadge, FIGHTERS[1].getMainSkill().getBadgePath());
             this.colocarImagen(fondo, "./assets/images/fondoCombat.jpg");
-            this.colocarImagen(jugador1, "./assets/gifs/deathmatch-fighter-right.gif");
+            this.colocarImagen(jugador1, "./assets/gifs/deathmatch-fighter-rigth.gif");
             this.colocarImagen(jugador2, "./assets/gifs/deathmatch-fighter-left.gif");
             this.setLocationRelativeTo(null);
         }
@@ -1042,10 +1043,10 @@ public class FightGame {
                 
                 if (Integer.parseInt(lblSPHP.getText()) <= 0) {
                     lblSPHP.setText("0");
-                    new CinematicWindow(GenericCombatCinematics.randomGenericCinematic(), FIGHTERS[0].getNickname()).setVisible(true);
+                    new CinematicWindow(DeathMatchCinematic.WIN_GUILE, FIGHTERS[0].getNickname()).setVisible(true);
                 } else if (Integer.parseInt(lblFPHP.getText()) <= 0) {
                     lblFPHP.setText("0");
-                    new CinematicWindow(GenericCombatCinematics.randomGenericCinematic(), FIGHTERS[1].getNickname()).setVisible(true);
+                    new CinematicWindow(DeathMatchCinematic.WIN_RYU, FIGHTERS[1].getNickname()).setVisible(true);
                 }
             }
             
@@ -1117,6 +1118,22 @@ public class FightGame {
             setLocationRelativeTo(null);
             timer.start();
         }
+        
+        public CinematicWindow(DeathMatchCinematic deathMatchCinematic, String winnerNickname) {
+            int duration = deathMatchCinematic.getDuration();
+            initComponents();
+            colocarImagen(lblVideo, deathMatchCinematic.getGIFPath());
+            lblWinner.setText(winnerNickname);
+            timer = new Timer(duration, (e) -> {
+                this.dispose();
+                stopTimer();
+                new MainMenu().setVisible(true);
+            });
+
+            setLocationRelativeTo(null);
+            timer.start();
+        }
+
 
         @SuppressWarnings("unchecked")
         // <editor-fold defaultstate="collapsed" desc="Generated Code">
